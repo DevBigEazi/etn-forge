@@ -1,0 +1,27 @@
+{
+  "name": "create-electroneum-dapp",
+  "version": "1.0.0",
+  "description": "Starter template for Electroneum DApps",
+  "bin": {
+    "create-electroneum-dapp": "./bin/create-app.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electroneum",
+    "dapp",
+    "blockchain",
+    "ethereum",
+    "hardhat",
+    "react",
+    "nextjs",
+    "typescript"
+  ],
+  "author": "DevBigEazi",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^9.5.0"
+  }
+}
