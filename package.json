@@ -14,6 +14,7 @@
     "blockchain",
     "ethereum",
     "hardhat",
+    "foundry",
     "react",
     "nextjs",
     "typescript"
@@ -22,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
-    "commander": "^9.5.0"
+    "commander": "^9.5.0",
+    "inquirer": "^12.6.3"
   }
 }
