@@ -3,15 +3,18 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-      "dev": "cd frontend && npm run dev",
-      "build": "cd frontend && npm run build",
-      "start": "cd frontend && npm run start",
-      "hardhat": "cd contracts && npx hardhat node",
-      "compile": "cd contracts && npx hardhat compile",
-      "test": "cd contracts && npx hardhat test"
+        "dev": "cd frontend && npm run dev",
+        "build": "cd frontend && npm run build",
+        "start": "cd frontend && npm run start",
+        "hardhat": "cd contracts && npx hardhat node",
+        "compile": "cd contracts && npx hardhat compile",
+        "test": "cd contracts && npx hardhat test"
     },
     "workspaces": [
-      "frontend",
-      "contracts"
-    ]
-  }
+        "frontend",
+        "contracts"
+    ],
+    "devDependencies": {
+        "hardhat": "^2.24.1"
+    }
+}

@@ -1,0 +1,15 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+evm_version = "london"  # or "berlin"
+
+[rpc_endpoints]
+electroneum-testnet = "https://rpc.ankr.com/electroneum_testnet/${ANKR_API_KEY}"
+electroneum = "https://rpc.ankr.com/electroneum/${ANKR_API_KEY}"
+ 
+[etherscan]
+electroneum-testnet = { key = "empty", url = "https://testnet-blockexplorer.electroneum.com/api"}
+electroneum = { key = "empty", url = "https://blockexplorer.electroneum.com/api" }
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
