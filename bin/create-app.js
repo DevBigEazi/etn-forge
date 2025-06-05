@@ -63,15 +63,15 @@ function createSelector(question, choices) {
     let isFirstRender = true;
 
     // Hide cursor and enable raw mode
-    process.stdout.write("\x1B[?25l");
+    process.stdout.write('\x1B[?25l');
     process.stdin.setRawMode(true);
     process.stdin.resume();
 
     function render() {
       if (!isFirstRender) {
-        // Clear previous output (move up and clear lines)
+        // Clear previous output
         for (let i = 0; i < choices.length + 1; i++) {
-          process.stdout.write("\x1B[1A\x1B[2K");
+          process.stdout.write('\x1B[1A\x1B[2K');
         }
       }
       isFirstRender = false;
@@ -81,23 +81,30 @@ function createSelector(question, choices) {
 
       // Display choices
       choices.forEach((choice, index) => {
-        const prefix = index === selectedIndex ? chalk.cyan("❯ ") : "  ";
-        const text =
-          index === selectedIndex ? chalk.cyan(choice.name) : choice.name;
+        const prefix = index === selectedIndex ? chalk.cyan('❯ ') : '  ';
+        const text = index === selectedIndex ? chalk.cyan(choice.name) : choice.name;
         console.log(prefix + text);
       });
     }
 
+    const handleExit = () => {
+      cleanup();
+      process.exit(0);
+    };
+    process.on('SIGINT', handleExit);
+
     function cleanup() {
       process.stdin.setRawMode(false);
-      process.stdin.removeAllListeners("data");
-      process.stdout.write("\x1B[?25h"); // Show cursor
+      process.stdin.pause();
+      process.stdin.removeAllListeners('data');
+      process.stdout.write('\x1B[?25h');
+      process.removeListener('SIGINT', handleExit);
     }
 
     function showResult() {
       // Clear the selection interface
       for (let i = 0; i < choices.length + 1; i++) {
-        process.stdout.write("\x1B[1A\x1B[2K");
+        process.stdout.write('\x1B[1A\x1B[2K');
       }
 
       // Show the final selection
@@ -111,31 +118,34 @@ function createSelector(question, choices) {
     // Initial render
     render();
 
-    process.stdin.on("data", (key) => {
-      const keyStr = key.toString();
+    process.stdin.on('data', (key) => {
+      try {
+        const keyStr = key.toString();
 
-      // Handle arrow keys
-      if (keyStr === "\x1b[A" || keyStr === "\x1b[B") {
-        // Up or Down arrow
-        if (keyStr === "\x1b[A" && selectedIndex > 0) {
-          // Up arrow
-          selectedIndex--;
-        } else if (keyStr === "\x1b[B" && selectedIndex < choices.length - 1) {
-          // Down arrow
-          selectedIndex++;
+        // Handle arrow keys
+        if (keyStr === '\x1b[A' || keyStr === '\x1b[B') {
+          if (keyStr === '\x1b[A' && selectedIndex > 0) {
+            selectedIndex--;
+          } else if (keyStr === '\x1b[B' && selectedIndex < choices.length - 1) {
+            selectedIndex++;
+          }
+          render();
         }
-        render();
-      }
-      // Handle Enter key
-      else if (keyStr === "\r" || keyStr === "\n") {
-        showResult();
+        // Handle Enter key
+        else if (keyStr === '\r' || keyStr === '\n') {
+          showResult();
+          cleanup();
+          resolve(choices[selectedIndex].value);
+          return;
+        }
+        // Handle Ctrl+C
+        else if (keyStr === '\x03') {
+          cleanup();
+          process.exit(0);
+        }
+      } catch (err) {
         cleanup();
-        resolve(choices[selectedIndex].value);
-      }
-      // Handle Ctrl+C
-      else if (keyStr === "\x03") {
-        cleanup();
-        process.exit(0);
+        throw err;
       }
     });
   });
