@@ -1,9 +1,9 @@
 {
-  "name": "create-electroneum-dapp",
+  "name": "create-etn-forge",
   "version": "1.0.0",
   "description": "Starter template for Electroneum DApps",
   "bin": {
-    "create-electroneum-dapp": "./bin/create-app.js"
+    "create-etn-forge": "./bin/create-app.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

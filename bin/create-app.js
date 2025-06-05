@@ -149,7 +149,7 @@ async function main() {
   if (!projectName) {
     console.log(chalk.red.bold("✖ Project name is required."));
     console.log(
-      chalk.blue("Usage: npx create-electroneum-dapp <project-name>\n")
+      chalk.blue("Usage: npx create-etn-forge <project-name>\n")
     );
     process.exit(1);
   }

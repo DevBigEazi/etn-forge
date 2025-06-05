@@ -6,9 +6,10 @@
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "start": "cd frontend && npm run start",
-    "hardhat": "cd smart-contract && npx hardhat node",
-    "compile": "cd smart-contract && npx hardhat compile",
-    "test": "cd smart-contract && npx hardhat test"
+    "lint": "cd frontend && npm run lint",
+    "forge": "cd smart-contract && forge",
+    "test": "cd smart-contract && forge test",
+    "compile": "cd smart-contract && forge build"
   },
   "workspaces": [
     "frontend",
