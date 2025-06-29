@@ -2,7 +2,7 @@
 src = "src"
 out = "out"
 libs = ["lib"]
-evm_version = "london"  # or "berlin"
+evm_version = "paris"
 
 [rpc_endpoints]
 electroneum-testnet = "https://rpc.ankr.com/electroneum_testnet/${ANKR_API_KEY}"
