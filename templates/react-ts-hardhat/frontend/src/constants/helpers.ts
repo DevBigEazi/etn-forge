@@ -1,5 +1,5 @@
 export const CONTRACTS = {
-    mainnet: "0x41E6054BaD84Fb703D20503F06c9c030Ebd15823",
+    mainnet: "0xB922dA0212c1945050c037270A60990924DBaefB",
     testnet: "0x41E6054BaD84Fb703D20503F06c9c030Ebd15898"
   } as const;
   
