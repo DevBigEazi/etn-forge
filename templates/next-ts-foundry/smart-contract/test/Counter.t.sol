@@ -50,16 +50,19 @@ contract CounterTest is Test {
         assertEq(counter.count(), 1);
     }
 
+    function test_DecrementCanGoNegative() public {
+        counter.decrement();
+        assertEq(counter.count(), -1);
+        
+        counter.decrement();
+        assertEq(counter.count(), -2);
+    }
+
     function test_DecrementEmitsEvent() public {
         counter.increment(); // Set to 1 first
         
         vm.expectEmit(true, true, false, true);
         emit Counter.CountChanged(0, owner);
-        counter.decrement();
-    }
-
-    function test_DecrementRevertsAtZero() public {
-        vm.expectRevert("Count cannot go below zero");
         counter.decrement();
     }
 
@@ -89,16 +92,20 @@ contract CounterTest is Test {
         counter.reset();
     }
 
-    function test_ResetRevertsForNonOwner() public {
-        vm.prank(user);
-        vm.expectRevert("Only owner can reset");
-        counter.reset();
-    }
-
     function test_ResetWhenAlreadyZero() public {
         vm.expectEmit(true, true, false, true);
         emit Counter.CountChanged(0, owner);
         counter.reset();
+    }
+
+    function test_ResetByAnyUser() public {
+        counter.increment();
+        counter.increment();
+        assertEq(counter.count(), 2);
+        
+        vm.prank(user);
+        counter.reset();
+        assertEq(counter.count(), 0);
     }
 
     function testFuzz_IncrementMultipleTimes(uint8 times) public {
@@ -108,12 +115,10 @@ contract CounterTest is Test {
             counter.increment();
         }
         
-        assertEq(counter.count(), times);
+        assertEq(counter.count(), int256(uint256(times)));
     }
 
     function testFuzz_IncrementAndDecrement(uint8 increments, uint8 decrements) public {
-        vm.assume(increments >= decrements);
-        
         for (uint8 i = 0; i < increments; i++) {
             counter.increment();
         }
@@ -122,44 +127,27 @@ contract CounterTest is Test {
             counter.decrement();
         }
         
-        assertEq(counter.count(), increments - decrements);
+        assertEq(counter.count(), int256(uint256(increments)) - int256(uint256(decrements)));
     }
 
-    function testFuzz_DecrementFailsWhenInsufficientCount(uint8 increments, uint8 decrements) public {
-        vm.assume(decrements > increments);
+    function testFuzz_DecrementCanGoNegative(uint8 decrements) public {
+        vm.assume(decrements > 0);
         
-        for (uint8 i = 0; i < increments; i++) {
-            counter.increment();
-        }
-        
-        // Should succeed for first `increments` decrements
-        for (uint8 i = 0; i < increments; i++) {
+        // Start from 0 and decrement - should go negative
+        for (uint8 i = 0; i < decrements; i++) {
             counter.decrement();
         }
         
-        // Should fail on the next decrement
-        vm.expectRevert("Count cannot go below zero");
-        counter.decrement();
+        assertEq(counter.count(), -int256(uint256(decrements)));
     }
 
-    function testFuzz_ResetByOwnerAlwaysWorks(uint8 count) public {
+    function testFuzz_ResetByAnyUser(address anyUser, uint8 count) public {
         for (uint8 i = 0; i < count; i++) {
             counter.increment();
         }
         
+        vm.prank(anyUser);
         counter.reset();
         assertEq(counter.count(), 0);
-    }
-
-    function testFuzz_ResetByNonOwnerAlwaysFails(address nonOwner, uint8 count) public {
-        vm.assume(nonOwner != owner);
-        
-        for (uint8 i = 0; i < count; i++) {
-            counter.increment();
-        }
-        
-        vm.prank(nonOwner);
-        vm.expectRevert("Only owner can reset");
-        counter.reset();
     }
 }

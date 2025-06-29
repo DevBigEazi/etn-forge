@@ -2,7 +2,7 @@ const { loadFixture } = require("@nomicfoundation/hardhat-toolbox/network-helper
 const { expect } = require("chai");
 const hre = require("hardhat");
 
-describe("SimpleCounter", function () {
+describe("Counter", function () {
   // Fixture to deploy the contract
   async function deployCounterFixture() {
     // Get signers
@@ -79,13 +79,6 @@ describe("SimpleCounter", function () {
         .withArgs(0, owner.address);
     });
 
-    it("Should revert when trying to decrement below zero", async function () {
-      const { counter } = await loadFixture(deployCounterFixture);
-      
-      await expect(counter.decrement())
-        .to.be.revertedWith("Count cannot go below zero");
-    });
-
     it("Should allow any account to decrement", async function () {
       const { counter, otherAccount } = await loadFixture(deployCounterFixture);
       
@@ -120,13 +113,6 @@ describe("SimpleCounter", function () {
       await expect(counter.reset())
         .to.emit(counter, "CountChanged")
         .withArgs(0, owner.address);
-    });
-
-    it("Should revert when called by non-owner", async function () {
-      const { counter, otherAccount } = await loadFixture(deployCounterFixture);
-      
-      await expect(counter.connect(otherAccount).reset())
-        .to.be.revertedWith("Only owner can reset");
     });
 
     it("Should work even when count is already 0", async function () {

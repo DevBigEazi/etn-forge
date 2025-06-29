@@ -13,5 +13,8 @@
     "workspaces": [
         "frontend",
         "smart-contract"
-    ]
+    ],
+    "dependencies": {
+        "react-hot-toast": "^2.5.2"
+    }
 }

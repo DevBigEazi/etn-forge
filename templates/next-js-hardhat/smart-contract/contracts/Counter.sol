@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.26;
 
 contract Counter {
-    uint256 public count;
+    int256 public count;
     address public owner;
     
-    event CountChanged(uint256 newCount, address changedBy);
+    event CountChanged(int256 newCount, address changedBy);
     
     constructor() {
         owner = msg.sender;
@@ -18,18 +18,16 @@ contract Counter {
     }
     
     function decrement() public {
-        require(count > 0, "Count cannot go below zero");
         count--;
         emit CountChanged(count, msg.sender);
     }
     
     function reset() public {
-        require(msg.sender == owner, "Only owner can reset");
         count = 0;
         emit CountChanged(count, msg.sender);
     }
     
-    function getCount() public view returns (uint256) {
+    function getCount() public view returns (int256) {
         return count;
     }
 }
