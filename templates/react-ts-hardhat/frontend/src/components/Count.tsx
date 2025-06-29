@@ -67,7 +67,9 @@ const Count = () => {
     <section className="count">
       <h3>Current count</h3>
       <p className="total-count">
-        {count !== undefined && count !== null ? count.toString() : "No data"}
+        <p className="total-count">
+  {count !== undefined ? count : "No data"}
+</p>
       </p>
       
       {/* Transaction status */}
@@ -117,13 +119,6 @@ const Count = () => {
           disabled={isResetPending || isResetConfirming}
         >
           {isResetPending ? 'Confirming...' : isResetConfirming ? 'Processing...' : 'Reset'}
-        </button>
-        
-        <button 
-          onClick={() => refetch()}
-          disabled={isAnyPending || isAnyConfirming}
-        >
-          Refresh Count
         </button>
       </div>
     </section>
