@@ -6,7 +6,7 @@ function App() {
     <main>
       <Header/>
       <section>
-        <h1>React + Typescript + Hardhat ( for smart contract )</h1>
+        <h1>React + TypeScript + Hardhat ( for smart contract )</h1>
       </section>
       <Count />
     </main>

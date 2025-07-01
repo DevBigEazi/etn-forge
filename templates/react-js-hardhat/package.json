@@ -3,15 +3,20 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-      "dev": "cd frontend && npm run dev",
-      "build": "cd frontend && npm run build",
-      "start": "cd frontend && npm run start",
-      "hardhat": "cd smart-contract && npx hardhat node",
-      "compile": "cd smart-contract && npx hardhat compile",
-      "test": "cd smart-contract && npx hardhat test"
+        "dev": "cd frontend && npm run dev",
+        "build": "cd frontend && npm run build",
+        "start": "cd frontend && npm run start",
+        "hardhat": "cd smart-contract && npx hardhat node",
+        "compile": "cd smart-contract && npx hardhat compile",
+        "test": "cd smart-contract && npx hardhat test"
     },
     "workspaces": [
-      "frontend",
-      "smart-contract"
-    ]
-  }
+        "frontend",
+        "smart-contract"
+    ],
+    "dependencies": {
+        "@tanstack/react-query": "^5.81.5",
+        "viem": "^2.31.6",
+        "wagmi": "^2.15.6"
+    }
+}
