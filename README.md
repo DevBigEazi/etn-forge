@@ -1,8 +1,8 @@
-# ETN-Forge 🚀
+# etn-dapp-forge 🚀
 
 **The Ultimate Electroneum DApp Scaffolding Tool**
 
-ETN-Forge is a comprehensive development toolkit designed to accelerate Electroneum DApp development. It provides pre-configured templates with modern web technologies and blockchain development tools, making it easy to build, test, and deploy decentralized applications on the Electroneum Smart Chain.
+etn-dapp-forge is a comprehensive development toolkit designed to accelerate Electroneum DApp development. It provides pre-configured templates with modern web technologies and blockchain development tools, making it easy to build, test, and deploy decentralized applications on the Electroneum Smart Chain.
 
 ## 🌟 Features
 
@@ -17,7 +17,7 @@ ETN-Forge is a comprehensive development toolkit designed to accelerate Electron
 
 ## 📋 Prerequisites
 
-Before using ETN-Forge, ensure you have the following installed:
+Before using etn-dapp-forge, ensure you have the following installed:
 
 - **Node.js** (v18 or higher)
 - **npm** or **yarn** or **pnpm**
@@ -32,8 +32,8 @@ For blockchain development:
 ### Create a New DApp
 
 ```bash
-npm install -g etn-forge
-npx create-etn-forge my-dapp
+npm install -g etn-dapp-forge
+npx create-etn-dapp my-dapp
 ```
 
 ### Interactive Setup
@@ -48,7 +48,7 @@ The CLI will guide you through the setup process:
 
 ```bash
 # Create a Next.js + TypeScript + Hardhat project
-npx create-etn-forge my-nextjs-dapp
+npx create-etn-dapp my-nextjs-dapp
 
 # The CLI will automatically:
 # ✅ Copy template files
@@ -313,8 +313,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/etn-forge.git
-cd etn-forge
+git clone https://github.com/your-username/etn-dapp-forge.git
+cd etn-dapp-forge
 
 # Install dependencies
 npm install
@@ -323,15 +323,15 @@ npm install
 npm link
 
 # Test the CLI
-create-etn-forge test-project
+create-etn-dapp test-project
 ```
 ## 📞 Support
 
 - **Documentation**: [https://docs.electroneum.com](https://docs.electroneum.com)
-- **GitHub Issues**: [Report bugs here](https://github.com/devbigeazi/etn-forge/issues)
+- **GitHub Issues**: [Report bugs here](https://github.com/devbigeazi/etn-dapp-forge/issues)
 
 ---
 
 **Built with ❤️ by the Electroneum Community**
 
-*ETN-Forge - Empowering developers to build the future of decentralized applications on Electroneum.*
+*etn-dapp-forge - Empowering developers to build the future of decentralized applications on Electroneum.*

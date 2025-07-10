@@ -1,12 +1,13 @@
 {
-  "name": "etn-forge",
+  "name": "etn-dapp-forge",
   "version": "0.0.1",
   "description": "Starter template for Electroneum DApps",
+  "main": "bin/create-app.js",
   "bin": {
-    "create-etn-forge": "bin/create-app.js"
+    "create-etn-dapp": "bin/create-app.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests specified\""
   },
   "keywords": [
     "electroneum",
@@ -22,10 +23,30 @@
     "tailwindcss",
     "viem",
     "wagmi",
-    "ethers"
+    "ethers",
+    "cli",
+    "scaffold",
+    "template"
   ],
   "author": "DevBigEazi",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devbigeazi/etn-dapp-forge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devbigeazi/etn-dapp-forge/issues"
+  },
+  "homepage": "https://github.com/devbigeazi/etn-dapp-forge#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/create-app.js",
+    "README.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
+  ],
   "dependencies": {
     "@tanstack/react-query": "^5.82.0",
     "chalk": "^4.1.2",
