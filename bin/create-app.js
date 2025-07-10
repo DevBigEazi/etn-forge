@@ -52,7 +52,7 @@ function displayBanner() {
         `)
   );
   console.log(
-    chalk.green.bold("  etn-dapp-forge - The Electroneum DApp Scaffolding Tool\n")
+    chalk.green.bold("  etn-dappforge - The Electroneum DApp Scaffolding Tool\n")
   );
 }
 

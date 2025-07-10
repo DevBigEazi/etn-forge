@@ -1,8 +1,8 @@
-# etn-dapp-forge 🚀
+# etn-dappforge 🚀
 
 **The Ultimate Electroneum DApp Scaffolding Tool**
 
-etn-dapp-forge is a comprehensive development toolkit designed to accelerate Electroneum DApp development. It provides pre-configured templates with modern web technologies and blockchain development tools, making it easy to build, test, and deploy decentralized applications on the Electroneum Smart Chain.
+etn-dappforge is a comprehensive development toolkit designed to accelerate Electroneum DApp development. It provides pre-configured templates with modern web technologies and blockchain development tools, making it easy to build, test, and deploy decentralized applications on the Electroneum Smart Chain.
 
 ## 🌟 Features
 
@@ -17,7 +17,7 @@ etn-dapp-forge is a comprehensive development toolkit designed to accelerate Ele
 
 ## 📋 Prerequisites
 
-Before using etn-dapp-forge, ensure you have the following installed:
+Before using etn-dappforge, ensure you have the following installed:
 
 - **Node.js** (v18 or higher)
 - **npm** or **yarn** or **pnpm**
@@ -32,7 +32,7 @@ For blockchain development:
 ### Create a New DApp
 
 ```bash
-npm install -g etn-dapp-forge
+npm install -g etn-dappforge
 npx create-etn-dapp my-dapp
 ```
 
@@ -313,8 +313,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/etn-dapp-forge.git
-cd etn-dapp-forge
+git clone https://github.com/DevBigEazi/etn-dappforge.git
+cd etn-dappforge
 
 # Install dependencies
 npm install
@@ -328,10 +328,10 @@ create-etn-dapp test-project
 ## 📞 Support
 
 - **Documentation**: [https://docs.electroneum.com](https://docs.electroneum.com)
-- **GitHub Issues**: [Report bugs here](https://github.com/devbigeazi/etn-dapp-forge/issues)
+- **GitHub Issues**: [Report bugs here](https://github.com/devbigeazi/etn-dappforge/issues)
 
 ---
 
-**Built with ❤️ by the Electroneum Community**
+**Built with ❤️ for Electroneum Developer Community**
 
-*etn-dapp-forge - Empowering developers to build the future of decentralized applications on Electroneum.*
+*etn-dappforge - Empowering developers to build the future of decentralized applications on Electroneum.*

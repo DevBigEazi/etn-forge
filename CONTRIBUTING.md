@@ -1,6 +1,6 @@
-# Contributing to etn-dapp-forge 🤝
+# Contributing to etn-dappforge 🤝
 
-Thank you for your interest in contributing to etn-dapp-forge! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to etn-dappforge! This document provides guidelines and information for contributors.
 
 ## 📋 Table of Contents
 
@@ -54,8 +54,8 @@ This project and everyone participating in it is governed by our Code of Conduct
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/etn-dapp-forge.git
-cd etn-dapp-forge
+git clone https://github.com/your-username/etn-dappforge.git
+cd etn-dappforge
 
 # Install dependencies
 npm install
@@ -80,7 +80,7 @@ npm run test:template next-ts-hardhat
 ## 📁 Project Structure
 
 ```
-etn-dapp-forge/
+etn-dappforge/
 ├── bin/                    # CLI executable
 │   └── create-app.js      # Main CLI logic
 ├── templates/             # Template directories
@@ -260,7 +260,7 @@ What actually happens
 - OS: [e.g., macOS, Windows, Linux]
 - Node.js version: [e.g., 18.17.0]
 - npm version: [e.g., 9.6.7]
-- etn-dapp-forge version: [e.g., 0.0.1]
+- etn-dappforge version: [e.g., 0.0.1]
 
 **Additional Information**
 Any other relevant information
@@ -304,8 +304,8 @@ Contributors will be recognized in:
 
 ## 📄 License
 
-By contributing to etn-dapp-forge, you agree that your contributions will be licensed under the MIT License.
+By contributing to etn-dappforge, you agree that your contributions will be licensed under the MIT License.
 
 ---
 
-**Thank you for contributing to etn-dapp-forge! 🚀** 
+**Thank you for contributing to etn-dappforge! 🚀** 
