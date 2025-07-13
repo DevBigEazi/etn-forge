@@ -1,5 +1,5 @@
 {
-  "name": "etn-dappforge",
+  "name": "etn-forge",
   "version": "0.0.1",
   "description": "Starter template for Electroneum DApps",
   "main": "bin/create-app.js",
@@ -32,12 +32,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devbigeazi/etn-dappforge.git"
+    "url": "https://github.com/devbigeazi/etn-forge.git"
   },
   "bugs": {
-    "url": "https://github.com/devbigeazi/etn-dappforge/issues"
+    "url": "https://github.com/devbigeazi/etn-forge/issues"
   },
-  "homepage": "https://github.com/devbigeazi/etn-dappforge#readme",
+  "homepage": "https://github.com/devbigeazi/etn-forge#readme",
   "engines": {
     "node": ">=18.0.0"
   },
