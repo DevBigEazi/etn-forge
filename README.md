@@ -327,7 +327,7 @@ create-etn-dapp test-project
 ```
 ## 📞 Support
 
-- **Documentation**: [https://docs.electroneum.com](https://docs.electroneum.com)
+- **Documentation**: [https://developer.electroneum.com](https://developer.electroneum.com)
 - **GitHub Issues**: [Report bugs here](https://github.com/devbigeazi/etn-forge/issues)
 
 ---
