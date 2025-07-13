@@ -1,6 +1,6 @@
-# etn-dappforge Technical Documentation 🔧
+# etn-forge Technical Documentation 🔧
 
-This document provides detailed technical information about the etn-dappforge project architecture, implementation, and development guidelines.
+This document provides detailed technical information about the etn-forge project architecture, implementation, and development guidelines.
 
 ## 📋 Table of Contents
 
@@ -18,7 +18,7 @@ This document provides detailed technical information about the etn-dappforge pr
 ### Project Structure
 
 ```
-etn-dappforge/
+etn-forge/
 ├── bin/                    # CLI executable
 │   └── create-app.js      # Main CLI logic
 ├── templates/             # Template directories
@@ -566,4 +566,4 @@ jobs:
 
 ---
 
-**This technical documentation provides a comprehensive overview of the etn-dappforge architecture and implementation details. For specific usage instructions, refer to the main README.md file.** 
+**This technical documentation provides a comprehensive overview of the etn-forge architecture and implementation details. For specific usage instructions, refer to the main README.md file.** 

@@ -17,7 +17,7 @@ export default function Header() {
             <Link href="/" className="flex items-center space-x-2">
               <Image src={"/ETN.png"} alt="etn logo" width={32} height={32}/>
               <span className="text-xl font-bold text-gray-900 dark:text-white">
-                Electroneum Dapp Starter (etn-dappforge)
+                Electroneum Dapp Starter (etn-forge)
               </span>
             </Link>
           </div>

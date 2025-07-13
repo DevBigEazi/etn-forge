@@ -43,16 +43,18 @@ async function copyDir(src, dest) {
 function displayBanner() {
   console.log(
     chalk.blue.bold(`
-      ███████╗████████╗███╗   ██╗    ██████╗  █████╗ ██████╗ ██████╗     ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
-      ██╔════╝╚══██╔══╝████╗  ██║    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
-      █████╗     ██║   ██╔██╗ ██║    ██║  ██║███████║██████╔╝██████╔╝    █████╗  ██║   ██║██████╔╝██║  ███╗█████╗  
-      ██╔══╝     ██║   ██║╚██╗██║    ██║  ██║██╔══██║██╔═══╝ ██╔═══╝     ██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝  
-      ███████╗   ██║   ██║ ╚████║    ██████╔╝██║  ██║██║     ██║         ██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
-      ╚══════╝   ╚═╝   ╚═╝  ╚═══╝    ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝         ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
-        `)
+      ███████╗████████╗███╗   ██╗    ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
+      ██╔════╝╚══██╔══╝████╗  ██║    ██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
+      █████╗     ██║   ██╔██╗ ██║    █████╗  ██║   ██║██████╔╝██║  ███╗█████╗  
+      ██╔══╝     ██║   ██║╚██╗██║    ██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝  
+      ███████╗   ██║   ██║ ╚████║    ██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
+      ╚══════╝   ╚═╝   ╚═╝  ╚═══╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+      `)
   );
   console.log(
-    chalk.green.bold("  etn-dappforge - The Electroneum DApp Scaffolding Tool\n")
+    chalk.green.bold(
+      "  etn-forge - The Electroneum DApp Scaffolding Tool\n"
+    )
   );
 }
 
@@ -63,7 +65,7 @@ function createSelector(question, choices) {
     let isFirstRender = true;
 
     // Hide cursor and enable raw mode
-    process.stdout.write('\x1B[?25l');
+    process.stdout.write("\x1B[?25l");
     process.stdin.setRawMode(true);
     process.stdin.resume();
 
@@ -71,7 +73,7 @@ function createSelector(question, choices) {
       if (!isFirstRender) {
         // Clear previous output
         for (let i = 0; i < choices.length + 1; i++) {
-          process.stdout.write('\x1B[1A\x1B[2K');
+          process.stdout.write("\x1B[1A\x1B[2K");
         }
       }
       isFirstRender = false;
@@ -81,8 +83,9 @@ function createSelector(question, choices) {
 
       // Display choices
       choices.forEach((choice, index) => {
-        const prefix = index === selectedIndex ? chalk.cyan('❯ ') : '  ';
-        const text = index === selectedIndex ? chalk.cyan(choice.name) : choice.name;
+        const prefix = index === selectedIndex ? chalk.cyan("❯ ") : "  ";
+        const text =
+          index === selectedIndex ? chalk.cyan(choice.name) : choice.name;
         console.log(prefix + text);
       });
     }
@@ -91,20 +94,20 @@ function createSelector(question, choices) {
       cleanup();
       process.exit(0);
     };
-    process.on('SIGINT', handleExit);
+    process.on("SIGINT", handleExit);
 
     function cleanup() {
       process.stdin.setRawMode(false);
       process.stdin.pause();
-      process.stdin.removeAllListeners('data');
-      process.stdout.write('\x1B[?25h');
-      process.removeListener('SIGINT', handleExit);
+      process.stdin.removeAllListeners("data");
+      process.stdout.write("\x1B[?25h");
+      process.removeListener("SIGINT", handleExit);
     }
 
     function showResult() {
       // Clear the selection interface
       for (let i = 0; i < choices.length + 1; i++) {
-        process.stdout.write('\x1B[1A\x1B[2K');
+        process.stdout.write("\x1B[1A\x1B[2K");
       }
 
       // Show the final selection
@@ -118,28 +121,31 @@ function createSelector(question, choices) {
     // Initial render
     render();
 
-    process.stdin.on('data', (key) => {
+    process.stdin.on("data", (key) => {
       try {
         const keyStr = key.toString();
 
         // Handle arrow keys
-        if (keyStr === '\x1b[A' || keyStr === '\x1b[B') {
-          if (keyStr === '\x1b[A' && selectedIndex > 0) {
+        if (keyStr === "\x1b[A" || keyStr === "\x1b[B") {
+          if (keyStr === "\x1b[A" && selectedIndex > 0) {
             selectedIndex--;
-          } else if (keyStr === '\x1b[B' && selectedIndex < choices.length - 1) {
+          } else if (
+            keyStr === "\x1b[B" &&
+            selectedIndex < choices.length - 1
+          ) {
             selectedIndex++;
           }
           render();
         }
         // Handle Enter key
-        else if (keyStr === '\r' || keyStr === '\n') {
+        else if (keyStr === "\r" || keyStr === "\n") {
           showResult();
           cleanup();
           resolve(choices[selectedIndex].value);
           return;
         }
         // Handle Ctrl+C
-        else if (keyStr === '\x03') {
+        else if (keyStr === "\x03") {
           cleanup();
           process.exit(0);
         }
@@ -158,9 +164,7 @@ async function main() {
   const projectName = process.argv[2];
   if (!projectName) {
     console.log(chalk.red.bold("✖ Project name is required."));
-    console.log(
-      chalk.blue("Usage: npx create-etn-dapp <project-name>\n")
-    );
+    console.log(chalk.blue("Usage: npx create-etn-dapp <project-name>\n"));
     process.exit(1);
   }
 
