@@ -187,7 +187,7 @@ forge script script/Counter.s.sol:CounterScript --rpc-url <rpc_url> --private-ke
 | Network | Chain ID | RPC URL | Explorer |
 |---------|----------|---------|----------|
 | Mainnet | 52014 | `https://rpc.ankr.com/electroneum/${ANKR_API_KEY}` | `https://blockexplorer.electroneum.com` |
-| Testnet | 52014 | `https://rpc.ankr.com/electroneum_testnet/${ANKR_API_KEY}` | `https://testnet-blockexplorer.electroneum.com` |
+| Testnet | 5201420 | `https://rpc.ankr.com/electroneum_testnet/${ANKR_API_KEY}` | `https://testnet-blockexplorer.electroneum.com` |
 
 ### Environment Variables
 
@@ -335,3 +335,18 @@ create-etn-dapp test-project
 **Built with ❤️ for Electroneum Developer Community**
 
 *etn-forge - Empowering developers to build the future of decentralized applications on Electroneum.*
+
+## 🔗 Useful Links
+
+- [Electroneum Docs](https://developer.electroneum.com/)
+- [Viem Docs](https://viem.sh/docs/getting-started)
+- [Wagmi Docs](https://wagmi.sh/react/getting-started)
+- [Foundry Book](https://book.getfoundry.sh/)
+- [Hardhat Docs](https://hardhat.org/getting-started/)
+- [Next.js Docs](https://nextjs.org/docs)
+- [React Docs](https://react.dev/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [TanStack Query Docs](https://tanstack.com/query/latest/docs/framework/react/overview)
+- [Ethers.js Docs](https://docs.ethers.org/v6/)
+- [TypeScript Docs](https://www.typescriptlang.org/docs/)
+- [Node.js Docs](https://nodejs.org)
