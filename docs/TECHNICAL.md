@@ -407,7 +407,7 @@ electroneum = { key = "empty", url = "https://blockexplorer.electroneum.com/api"
    ```bash
    # Create test project
    npm link
-   create-etn-dapp test-project
+   etn-forge test-project
    
    # Test template functionality
    cd test-project
@@ -498,10 +498,10 @@ electroneum = { key = "empty", url = "https://blockexplorer.electroneum.com/api"
 
 ```bash
 # Enable debug logging
-DEBUG=* create-etn-dapp my-project
+DEBUG=* etn-forge my-project
 
 # Verbose output
-create-etn-dapp my-project --verbose
+etn-forge my-project --verbose
 ```
 
 ### Frontend Debugging

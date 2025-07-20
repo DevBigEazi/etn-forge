@@ -64,7 +64,7 @@ npm install
 npm link
 
 # Test the CLI locally
-create-etn-dapp test-project
+npx etn-dapp test-project
 ```
 
 ### Testing Templates

@@ -53,7 +53,7 @@ function displayBanner() {
   );
   console.log(
     chalk.green.bold(
-      "  etn-forge - The Electroneum DApp Scaffolding Tool\n"
+      "ETN-FORGE - The Electroneum DApp Scaffolding Tool\n"
     )
   );
 }
@@ -164,7 +164,7 @@ async function main() {
   const projectName = process.argv[2];
   if (!projectName) {
     console.log(chalk.red.bold("✖ Project name is required."));
-    console.log(chalk.blue("Usage: npx create-etn-dapp <project-name>\n"));
+    console.log(chalk.blue("Usage: npx etn-forge <project-name>\n"));
     process.exit(1);
   }
 

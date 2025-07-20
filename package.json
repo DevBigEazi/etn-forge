@@ -1,10 +1,10 @@
 {
   "name": "etn-forge",
-  "version": "1.0.0",
+  "version": "1.1.2",
   "description": "Starter template for Electroneum DApps",
   "main": "bin/create-app.js",
   "bin": {
-    "create-etn-dapp": "bin/create-app.js"
+    "etn-forge": "bin/create-app.js"
   },
   "scripts": {
     "test": "echo \"No tests specified\""
@@ -43,6 +43,7 @@
   },
   "files": [
     "bin/create-app.js",
+    "templates/",
     "README.md",
     "CONTRIBUTING.md",
     "CHANGELOG.md"

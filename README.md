@@ -31,9 +31,10 @@ For blockchain development:
 
 ### Create a New DApp
 
-```bash
-npm install -g etn-forge
-npx create-etn-dapp my-dapp
+### Using npx (Recommended)
+
+```sh
+npx etn-forge <app name>
 ```
 
 ### Interactive Setup
@@ -48,7 +49,7 @@ The CLI will guide you through the setup process:
 
 ```bash
 # Create a Next.js + TypeScript + Hardhat project
-npx create-etn-dapp my-nextjs-dapp
+npx etn-forge my-nextjs-dapp
 
 # The CLI will automatically:
 # ✅ Copy template files
@@ -323,7 +324,7 @@ npm install
 npm link
 
 # Test the CLI
-create-etn-dapp test-project
+npx etn-dapp test-project
 ```
 ## 📞 Support
 
