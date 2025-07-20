@@ -1,6 +1,6 @@
 {
   "name": "etn-forge",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Starter template for Electroneum DApps",
   "main": "bin/create-app.js",
   "bin": {
