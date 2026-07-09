@@ -43,7 +43,8 @@ The CLI will guide you through the setup process:
 
 1. **Choose Language**: TypeScript (recommended) or JavaScript
 2. **Select Framework**: Next.js (recommended) or React
-3. **Pick Development Environment**: Hardhat (recommended) or Foundry
+3. **Choose Web3 SDK**: Wagmi + Viem (recommended) or thirdweb SDK
+4. **Pick Development Environment**: Hardhat (recommended) or Foundry (automatically set to Foundry for thirdweb)
 
 ### Example Usage
 
@@ -89,6 +90,8 @@ my-dapp/
 | `next-js-hardhat` | JavaScript | Hardhat | Next.js with JavaScript and Hardhat |
 | `next-ts-foundry` | TypeScript | Foundry | Next.js with TypeScript and Foundry |
 | `next-js-foundry` | JavaScript | Foundry | Next.js with JavaScript and Foundry |
+| `next-ts-thirdweb-foundry` | TypeScript | thirdweb + Foundry | Next.js with TypeScript, thirdweb SDK, and Foundry |
+| `next-js-thirdweb-foundry` | JavaScript | thirdweb + Foundry | Next.js with JavaScript, thirdweb SDK, and Foundry |
 
 ### React Templates
 
@@ -98,16 +101,18 @@ my-dapp/
 | `react-js-hardhat` | JavaScript | Hardhat | React with JavaScript and Hardhat |
 | `react-ts-foundry` | TypeScript | Foundry | React with TypeScript and Foundry |
 | `react-js-foundry` | JavaScript | Foundry | React with JavaScript and Foundry |
+| `react-ts-thirdweb-foundry` | TypeScript | thirdweb + Foundry | React with TypeScript, thirdweb SDK, and Foundry |
+| `react-js-thirdweb-foundry` | JavaScript | thirdweb + Foundry | React with JavaScript, thirdweb SDK, and Foundry |
 
 ## 🎯 What's Included
 
 ### Frontend Features
 
-- **Modern UI Framework**: Next.js 15 or React 19
+- **Modern UI Framework**: Next.js 16 or React 19
 - **Styling**: Tailwind CSS v4 with dark mode support
 - **Type Safety**: Full TypeScript support
-- **State Management**: TanStack Query for server state
-- **Wallet Integration**: Wagmi + Viem for blockchain interactions
+- **State Management**: TanStack Query for server state (Wagmi templates)
+- **Wallet Integration**: Wagmi + Viem or thirdweb SDK v5 for blockchain interactions
 - **Component Library**: Pre-built components for common DApp patterns
 - **Responsive Design**: Mobile-first responsive layouts
 - **Error Handling**: Comprehensive error states and loading indicators
@@ -117,7 +122,7 @@ my-dapp/
 - **Development Environment**: Hardhat or Foundry
 - **Sample Contract**: Counter contract with full CRUD operations
 - **Testing Framework**: Comprehensive test suite
-- **Deployment Scripts**: Automated deployment to Electroneum networks
+- **Deployment Scripts**: Automated deployment to Electroneum networks (and thirdweb Dashboards)
 - **Type Generation**: Automatic TypeScript types from contracts
 - **Gas Optimization**: Built-in gas reporting and optimization
 
@@ -200,6 +205,12 @@ ANKR_API_KEY=your_ankr_api_key_here
 
 # Private key for deployment (keep secure!)
 PRIVATE_KEY=your_private_key_here
+
+# Required for thirdweb client initialization (if using thirdweb template)
+# For Next.js:
+NEXT_PUBLIC_THIRDWEB_CLIENT_ID=your_thirdweb_client_id_here
+# For React (Vite):
+VITE_THIRDWEB_CLIENT_ID=your_thirdweb_client_id_here
 ```
 
 ## 📱 Sample DApp Features
@@ -264,6 +275,9 @@ forge script script/Counter.s.sol:CounterScript --rpc-url https://rpc.ankr.com/e
 
 # Deploy to mainnet
 forge script script/Counter.s.sol:CounterScript --rpc-url https://rpc.ankr.com/electroneum/${ANKR_API_KEY} --private-key ${PRIVATE_KEY} --broadcast
+
+# thirdweb Deploy (deploy to Electroneum Dashboard without exposing private keys)
+npx thirdweb deploy
 ```
 
 ## 🔍 Troubleshooting

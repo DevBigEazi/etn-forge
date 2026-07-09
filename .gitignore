@@ -1,3 +1,15 @@
 node_modules
 package-lock.json
-package.json
+
+# Ignore template-specific generated folders and files
+**/node_modules/
+**/package-lock.json
+**/.next/
+**/dist/
+**/out/
+**/cache/
+**/artifacts/
+**/typechain/
+**/typechain-types/
+*.log
+.DS_Store

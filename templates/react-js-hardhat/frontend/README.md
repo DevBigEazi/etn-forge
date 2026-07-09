@@ -1,12 +1,29 @@
-# React + Vite
+# Electroneum DApp Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend of your Electroneum DApp, built with **React 19**, **Vite**, and **Wagmi/Viem**.
 
-Currently, two official plugins are available:
+## ⚙️ Environment Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before starting, create a `.env` file in the root of the `frontend/` directory (or use your project root `.env`):
 
-## Expanding the ESLint configuration
+```env
+# Required for connecting to the Electroneum RPC via Ankr
+VITE_ANKR_API_KEY=your_ankr_api_key_here
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+
+## 📁 Folder Structure
+
+- **`src/`**: Source files containing components, hooks, and views.
+- **`src/components/`**: Pre-built UI components including wallet connect button.
+- **`src/hooks/`**: Custom hooks for smart contract read/write interactions.
+- **`src/constants/`**: Contract ABI and deployed addresses.

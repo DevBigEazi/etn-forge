@@ -1,0 +1,732 @@
+:root {
+  --primary-color: #8B5CF6;
+  --primary-hover: #7C3AED;
+  --secondary-color: #F8FAFC;
+  --text-color: #111827;
+  --text-light: #6B7280;
+  --border-color: #E5E7EB;
+  --background-color: #060606;
+  --modal-background: rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background: #fff;
+} 
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* background-image: url('./assets/images/bg-image.jpeg'); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--primary-color);
+}
+
+h2 {
+  color: var(--text-color);
+}
+
+/* Header Styles */
+.header-wrapper {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: inherit;
+}
+
+.header-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wallet-options-container {
+  margin-left: auto;
+}
+
+/* Button Styles */
+button {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  border-color: #646cff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(100, 108, 255, 0.3);
+  background: rgba(26, 26, 26, 0.9);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.wallet-connect-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.wallet-connect-button:hover {
+  background-color: var(--primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.wallet-connect-button:active {
+  transform: translateY(0);
+}
+
+.wallet-connect-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Modal Styles */
+.wallet-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--modal-background);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.wallet-modal {
+  background-color: var(--background-color);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 24rem;
+  margin: 1rem;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: slideUp 0.2s ease-out;
+}
+
+.wallet-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wallet-modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.modal-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.modal-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  transform: none;
+  box-shadow: none;
+}
+
+.modal-close-button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.wallet-modal-content {
+  padding: 1.5rem;
+}
+
+.wallet-modal-description {
+  margin: 0 0 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.wallet-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.wallet-option-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.wallet-option-button:hover {
+  background-color: #F3F4F6;
+  border-color: #D1D5DB;
+  transform: none;
+  box-shadow: none;
+}
+
+.wallet-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wallet-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.wallet-help-section {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1rem;
+}
+
+.wallet-help-section p {
+  margin: 0;
+}
+
+.learn-more-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.learn-more-link:hover {
+  text-decoration: underline;
+}
+
+/* Account Info Styles */
+.account-info-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.account-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.375rem 0.75rem 0.375rem 0.375rem;
+  background-color: var(--secondary-color);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+}
+
+.ens-avatar, .avatar-placeholder {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.account-status {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.status-indicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #10B981;
+}
+
+.disconnect-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Network Switcher Styles */
+.network-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.network-switcher-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background-color: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 160px;
+  justify-content: space-between;
+}
+
+.network-switcher-button:hover {
+  background-color: rgba(26, 26, 26, 0.9);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.network-switcher-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.network-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.network-indicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.network-indicator.mainnet {
+  background-color: #10B981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.network-indicator.testnet {
+  background-color: #F59E0B;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+}
+
+.network-name {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.network-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  min-width: 200px;
+  z-index: 50;
+  animation: slideDown 0.2s ease-out;
+}
+
+.network-dropdown-header {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.network-dropdown-header h4 {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.network-options {
+  padding: 0.5rem;
+}
+
+.network-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 0.25rem;
+}
+
+.network-option:last-child {
+  margin-bottom: 0;
+}
+
+.network-option:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: none;
+  box-shadow: none;
+}
+
+.network-option.active {
+  background-color: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.network-option:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.network-option-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.network-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.network-details .network-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.network-type {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Count section styles */
+.count {
+  margin: 2.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.count h3 {
+  font-size: 2rem;
+  color: #1123eb;
+}
+
+.total-count {
+  color: #7C3AED;
+  font-size: 6rem;
+  font-weight: 800;
+}
+
+/* Control buttons container */
+.control-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Increment button - Green */
+.increment-btn {
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: white;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+.increment-btn:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  border-color: #10B981;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
+}
+
+.increment-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Decrement button - Red */
+.decrement-btn {
+  background: linear-gradient(135deg, #EF4444, #DC2626);
+  color: white;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+.decrement-btn:hover {
+  background: linear-gradient(135deg, #DC2626, #B91C1C);
+  border-color: #EF4444;
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+  transform: translateY(-2px);
+}
+
+.decrement-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Reset button - Blue */
+.reset-btn {
+  background: linear-gradient(135deg, #3B82F6, #2563EB);
+  color: white;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  min-width: 120px;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+}
+
+.reset-btn:hover {
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  border-color: #3B82F6;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+  
+  .header-container {
+    padding: 0.75rem;
+  }
+  
+  .wallet-modal {
+    margin: 0.5rem;
+  }
+
+  .account-info-container {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .network-switcher-button {
+    min-width: 140px;
+    font-size: 0.8125rem;
+  }
+  
+  .network-dropdown {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    padding: 0.5rem;
+  }
+  
+  .wallet-modal {
+    margin: 0.5rem;
+  }
+  
+  .wallet-connect-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .account-info-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .network-switcher {
+    order: -1;
+  }
+
+  .network-switcher-button {
+    min-width: 120px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .control-buttons {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  
+  .increment-btn,
+  .decrement-btn,
+  .reset-btn {
+    padding: 0.75rem 1.5rem;
+    min-width: 100px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .control-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .increment-btn,
+  .decrement-btn,
+  .reset-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}

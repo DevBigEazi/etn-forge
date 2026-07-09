@@ -1,66 +1,25 @@
-## Foundry
+# Electroneum Smart Contract (Foundry)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This directory contains the smart contract development workspace built with Foundry, configured for the Electroneum Smart Chain.
 
-Foundry consists of:
+## 🚀 Development Commands
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Run these commands inside the `smart-contract/` directory:
 
-## Documentation
+- **`forge build`**: Compile contracts
+- **`forge test`**: Run contract unit tests
+- **`forge fmt`**: Format contract files
+- **`forge snapshot`**: Generate gas snapshots
+- **`anvil`**: Start a local Ethereum network node
+- **`forge script script/Counter.s.sol:CounterScript --rpc-url <rpc_url> --private-key <private_key> --broadcast`**: Deploy contract
 
-https://book.getfoundry.sh/
+## 📁 Folder Structure
 
-## Usage
+- **`src/`**: Solidity contracts (includes `Counter.sol`).
+- **`test/`**: Contract test files.
+- **`script/`**: Forge deploy scripts.
+- **`lib/`**: Submodule libraries (like `forge-std`).
 
-### Build
+---
 
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+**Deployed Testnet Contract Address:** `0xc3bf59348B0359A407dfC0532f34F1eA3Ce92CCf`

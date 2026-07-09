@@ -1,0 +1,16 @@
+# Compiler outputs
+out/
+cache/
+
+# Local env files
+.env
+.env.local
+
+# Dependency directories
+node_modules/
+
+# Test reports
+gas-report.txt
+
+# Anvil local state
+state.json

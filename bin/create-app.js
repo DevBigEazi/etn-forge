@@ -22,12 +22,27 @@ function execCommand(command, cwd) {
   }
 }
 
-// Recursive directory copy
+// Recursive directory copy with ignores
 async function copyDir(src, dest) {
+  const IGNORED = [
+    "node_modules",
+    ".next",
+    "dist",
+    "build",
+    "out",
+    "cache",
+    "artifacts",
+    "typechain-types",
+    "package-lock.json",
+    ".DS_Store"
+  ];
+
   await mkdir(dest, { recursive: true });
   const entries = await readdir(src);
 
   for (let entry of entries) {
+    if (IGNORED.includes(entry)) continue;
+
     const srcPath = path.join(src, entry);
     const destPath = path.join(dest, entry);
     const stats = await stat(srcPath);
@@ -192,24 +207,53 @@ async function main() {
     },
   ]);
 
-  // Select Ethereum development environment with arrow keys
-  const ethEnv = await createSelector("Choose your Ethereum environment:", [
+  let ethEnv;
+  let web3Sdk;
+
+  // Select Web3 SDK
+  web3Sdk = await createSelector("Choose your Web3 SDK:", [
     {
-      name: chalk.green("Hardhat (Recommended)"),
-      value: "hardhat",
+      name: chalk.green("Wagmi + Viem (Recommended)"),
+      value: "wagmi",
     },
     {
-      name: chalk.yellow("Foundry"),
-      value: "foundry",
+      name: chalk.yellow("thirdweb SDK"),
+      value: "thirdweb",
     },
   ]);
 
-  const template = `${framework}-${language}-${ethEnv}`;
-  const templateName = `${
-    framework === "next" ? "Next.js" : "React"
-  } + ${language.toUpperCase()} + ${
-    ethEnv.charAt(0).toUpperCase() + ethEnv.slice(1)
-  }`;
+  // Select Ethereum environment
+  if (web3Sdk === "thirdweb") {
+    ethEnv = "foundry";
+  } else {
+    ethEnv = await createSelector("Choose your Ethereum environment:", [
+      {
+        name: chalk.green("Hardhat (Recommended)"),
+        value: "hardhat",
+      },
+      {
+        name: chalk.yellow("Foundry"),
+        value: "foundry",
+      },
+    ]);
+  }
+
+  let template;
+  let templateName;
+
+  if (web3Sdk === "thirdweb") {
+    template = `${framework}-${language}-thirdweb-foundry`;
+    templateName = `${
+      framework === "next" ? "Next.js" : "React"
+    } + ${language.toUpperCase()} + thirdweb SDK + Foundry`;
+  } else {
+    template = `${framework}-${language}-${ethEnv}`;
+    templateName = `${
+      framework === "next" ? "Next.js" : "React"
+    } + ${language.toUpperCase()} + ${
+      ethEnv.charAt(0).toUpperCase() + ethEnv.slice(1)
+    }`;
+  }
 
   console.log(
     chalk.green.bold(
@@ -282,6 +326,15 @@ async function main() {
     console.log(chalk.yellow(`  npm run hardhat   # Start Hardhat node`));
   } else {
     console.log(chalk.yellow(`  npm run forge     # Start Foundry commands`));
+  }
+
+  if (web3Sdk === "thirdweb") {
+    console.log(
+      chalk.cyan(`\n💡 Tip: Please get your Client ID from thirdweb.com/dashboard`)
+    );
+    console.log(
+      chalk.cyan(`   and set it as NEXT_PUBLIC_THIRDWEB_CLIENT_ID in your frontend/.env file.\n`)
+    );
   }
 
   console.log(chalk.blue.bold("\nHappy coding! 🚀\n"));

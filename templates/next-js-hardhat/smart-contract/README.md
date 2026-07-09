@@ -1,13 +1,24 @@
-# Sample Hardhat Project
+# Electroneum Smart Contract (Hardhat + JavaScript)
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+This directory contains the smart contract development workspace built with Hardhat and JavaScript, configured for the Electroneum Smart Chain.
 
-Try running some of the following tasks:
+## 🚀 Development Commands
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+Run these commands inside the `smart-contract/` directory:
+
+- **`npx hardhat compile`**: Compile contracts
+- **`npx hardhat test`**: Run contract unit tests
+- **`npx hardhat node`**: Start a local Hardhat network node
+- **`npx hardhat ignition deploy ./ignition/modules/Counter.js --network electroneum-testnet`**: Deploy contract using Hardhat Ignition
+- **`npx hardhat run scripts/Counter.s.js --network electroneum-testnet`**: Deploy contract using scripts
+
+## 📁 Folder Structure
+
+- **`contracts/`**: Solidity contracts (includes `Counter.sol`).
+- **`test/`**: Contract test files.
+- **`scripts/`**: Traditional deploy scripts.
+- **`ignition/`**: Hardhat Ignition deployment modules.
+
+---
+
+**Deployed Testnet Contract Address:** `0xc3bf59348B0359A407dfC0532f34F1eA3Ce92CCf`

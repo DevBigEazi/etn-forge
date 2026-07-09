@@ -26,6 +26,10 @@ etn-forge/
 │   ├── next-js-hardhat/   # Next.js + JavaScript + Hardhat
 │   ├── next-ts-foundry/   # Next.js + TypeScript + Foundry
 │   ├── next-js-foundry/   # Next.js + JavaScript + Foundry
+│   ├── next-ts-thirdweb-foundry/ # Next.js + TypeScript + thirdweb + Foundry
+│   ├── next-js-thirdweb-foundry/ # Next.js + JavaScript + thirdweb + Foundry
+│   ├── react-ts-thirdweb-foundry/ # React + TypeScript + thirdweb + Foundry
+│   ├── react-js-thirdweb-foundry/ # React + JavaScript + thirdweb + Foundry
 │   ├── react-ts-hardhat/  # React + TypeScript + Hardhat
 │   ├── react-js-hardhat/  # React + JavaScript + Hardhat
 │   ├── react-ts-foundry/  # React + TypeScript + Foundry
@@ -195,11 +199,11 @@ template-name/
 
 ### Technology Stack
 
-- **Framework**: Next.js 15 / React 19
+- **Framework**: Next.js 16 / React 19
 - **Language**: TypeScript / JavaScript
 - **Styling**: Tailwind CSS 4
-- **State Management**: TanStack Query
-- **Blockchain**: Wagmi + Viem
+- **State Management**: TanStack Query (Wagmi templates)
+- **Blockchain**: Wagmi + Viem / thirdweb SDK v5
 - **Build Tool**: Turbopack (Next.js)
 
 ### Component Architecture
@@ -227,7 +231,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
 }
 ```
 
-#### 2. Configuration
+#### 2. Configuration (Wagmi)
 
 ```typescript
 // config.ts
@@ -241,6 +245,29 @@ export const config = createConfig({
     [electroneumTestnet.id]: http(),
   },
 });
+```
+
+#### 2.1 Configuration (thirdweb)
+
+For thirdweb templates, the setup uses the client utility and `defineChain` for network details.
+
+```typescript
+// lib/client.ts
+import { createThirdwebClient } from "thirdweb";
+
+// For Next.js:
+const clientId = process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "";
+// For React (Vite):
+// const clientId = import.meta.env.VITE_THIRDWEB_CLIENT_ID || "";
+
+export const client = createThirdwebClient({
+  clientId,
+});
+
+// usage in hooks/components
+import { defineChain } from "thirdweb";
+export const electroneum = defineChain(52014);
+export const electroneumTestnet = defineChain(5201420);
 ```
 
 #### 3. Custom Hooks
