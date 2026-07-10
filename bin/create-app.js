@@ -211,16 +211,31 @@ async function main() {
   let web3Sdk;
 
   // Select Web3 SDK
+  console.log(
+    chalk.dim(
+      "  💡 Tip: Choose thirdweb SDK if you need social auth (Google, email, passkeys).\n"
+    )
+  );
   web3Sdk = await createSelector("Choose your Web3 SDK:", [
     {
-      name: chalk.green("Wagmi + Viem (Recommended)"),
+      name: chalk.green("Wagmi + Viem (Recommended) — web3 wallets only"),
       value: "wagmi",
     },
     {
-      name: chalk.yellow("thirdweb SDK"),
+      name: chalk.yellow("thirdweb SDK — includes social auth (Google, email, passkeys)"),
       value: "thirdweb",
     },
   ]);
+
+  // Remind wagmi users about social auth limitation
+  if (web3Sdk === "wagmi") {
+    console.log(
+      chalk.dim(
+        "  ℹ️  Note: Wagmi + Viem supports web3 wallets (MetaMask, WalletConnect, etc.)\n" +
+        "     For social auth (Google, email), use thirdweb SDK instead.\n"
+      )
+    );
+  }
 
   // Select Ethereum environment
   if (web3Sdk === "thirdweb") {
