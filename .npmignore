@@ -37,6 +37,20 @@ templates/*/.env.example
 **/typechain-types/
 **/broadcast/
 
+# Exclude Foundry submodules (very large — explicitly listed)
+templates/react-ts-foundry/smart-contract/lib/
+templates/react-js-foundry/smart-contract/lib/
+templates/next-ts-foundry/smart-contract/lib/
+templates/next-js-foundry/smart-contract/lib/
+templates/react-ts-thirdweb-foundry/smart-contract/lib/
+templates/react-js-thirdweb-foundry/smart-contract/lib/
+templates/next-ts-thirdweb-foundry/smart-contract/lib/
+templates/next-js-thirdweb-foundry/smart-contract/lib/
+
+# Exclude Foundry build output
+**/.cache/
+**/out/
+
 # IDE files
 .vscode/
 .idea/
