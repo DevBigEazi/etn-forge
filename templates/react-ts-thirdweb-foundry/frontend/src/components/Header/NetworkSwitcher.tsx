@@ -14,7 +14,7 @@ const supportedNetworks = [
   { chain: electroneumTestnet, name: "Electroneum Testnet", testnet: true },
 ];
 
-const NetworkSwitcher = () => {
+const NetworkSwitcher: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const account = useActiveAccount();
   const activeChain = useActiveWalletChain();
@@ -25,7 +25,7 @@ const NetworkSwitcher = () => {
     (n) => n.chain.id === activeChain?.id
   );
 
-  const handleNetworkSwitch = async (chainDef) => {
+  const handleNetworkSwitch = async (chainDef: (typeof supportedNetworks)[number]) => {
     if (chainDef.chain.id === activeChain?.id) {
       setIsOpen(false);
       return;
@@ -43,8 +43,8 @@ const NetworkSwitcher = () => {
 
   // Close dropdown when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      const target = event.target;
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
       if (!target.closest(".network-switcher")) {
         setIsOpen(false);
       }

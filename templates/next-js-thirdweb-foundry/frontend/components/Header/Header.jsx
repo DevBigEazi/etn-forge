@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ConnectButton } from "thirdweb/react";
 import { client } from "@/lib/client";
 import { defineChain } from "thirdweb";
+import NetworkSwitcher from "./NetworkSwitcher";
 
 const electroneum = defineChain(52014);
 const electroneumTestnet = defineChain(5201420);
@@ -45,10 +46,13 @@ export default function Header() {
             </div>
             
             {/* Wallet Connection Component */}
-            <ConnectButton 
-              client={client} 
-              chains={[electroneum, electroneumTestnet]} 
-            />
+            <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+              <NetworkSwitcher />
+              <ConnectButton 
+                client={client} 
+                chains={[electroneum, electroneumTestnet]} 
+              />
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -92,10 +96,13 @@ export default function Header() {
               
               {/* Mobile Wallet Connection */}
               <div className="pt-2 border-t border-gray-200 dark:border-gray-700">
-                <ConnectButton 
-                  client={client} 
-                  chains={[electroneum, electroneumTestnet]} 
-                />
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+                  <NetworkSwitcher />
+                  <ConnectButton 
+                    client={client} 
+                    chains={[electroneum, electroneumTestnet]} 
+                  />
+                </div>
               </div>
             </div>
           </div>

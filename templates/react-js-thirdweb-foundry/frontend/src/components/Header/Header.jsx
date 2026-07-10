@@ -1,6 +1,7 @@
 import { ConnectButton } from "thirdweb/react";
 import { client } from "../../lib/client";
 import { defineChain } from "thirdweb";
+import NetworkSwitcher from "./NetworkSwitcher";
 
 const electroneum = defineChain(52014);
 const electroneumTestnet = defineChain(5201420);
@@ -10,10 +11,13 @@ const Header = () => {
       <div className="header-wrapper">
         <div className="header-container">
           <h2>Electroneum Dapp Starter Template</h2>
-          <ConnectButton 
-            client={client} 
-            chains={[electroneum, electroneumTestnet]} 
-          />
+          <div className="header-actions">
+            <NetworkSwitcher />
+            <ConnectButton 
+              client={client} 
+              chains={[electroneum, electroneumTestnet]} 
+            />
+          </div>
         </div>
       </div>
     )
